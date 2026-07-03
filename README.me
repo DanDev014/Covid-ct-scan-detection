@@ -1,0 +1,245 @@
+# **COVID-19 Lung CT Scan Classification using CNN**
+
+A deep learning-based medical imaging project that applies **Convolutional Neural Networks (CNNs)** to classify lung CT scan images into **COVID-19** and **Non-COVID-19** categories.
+
+This project focuses on **Recall (Sensitivity)** as the primary evaluation metric due to the high cost of false negatives in healthcare diagnosis.
+
+---
+
+## **Project Overview**
+
+The COVID-19 pandemic highlighted the need for fast and accurate diagnostic methods. While PCR testing remains standard, CT scans provide valuable imaging evidence for detecting lung infections.
+
+Manual interpretation of CT scans can be time-intensive and subject to variability. This project explores the use of deep learning to automate COVID-19 detection and support faster clinical decision-making.
+
+The model performs **binary image classification** on lung CT scan images using a custom CNN architecture.
+
+---
+
+## **Problem Statement**
+
+Early and accurate detection of COVID-19 is critical for treatment and containment. However, manual CT scan analysis by radiologists can be slow, especially under high patient volumes.
+
+This project addresses this challenge by developing an AI-powered image classification model capable of detecting COVID-19 from lung CT scans.
+
+---
+
+## **Objective**
+
+To build and evaluate a CNN model for automated classification of lung CT scan images into:
+
+- COVID-19
+- Non-COVID-19
+
+---
+
+## **Dataset**
+
+**Source:** Kaggle  
+**Dataset Name:** COVID-19 Lung CT Scans  
+**Author:** Mehrad Aria  
+
+Dataset URL:  
+https://www.kaggle.com/datasets/mehradaria/covid19-lung-ct-scans
+
+### **Dataset Summary**
+
+- **Total Images:** 8,439
+- **Classes:** 2
+- **Format:** PNG
+- **Original Resolution:** 512 × 512
+
+### **Folder Structure**
+
+```text
+COVID-19/
+Non-COVID-19/
+```
+
+---
+
+## **Project Workflow**
+
+### **1. Data Preprocessing**
+
+The following preprocessing steps were performed:
+
+- Loaded CT scan images from class folders
+- Resized images to **64 × 64**
+- Converted images into NumPy arrays
+- Normalized pixel values from **0–255** to **0–1**
+- Applied one-hot encoding to labels
+
+---
+
+### **2. Data Splitting**
+
+Dataset split:
+
+- **70% Training**
+- **15% Validation**
+- **15% Testing**
+
+This ensures:
+
+- effective model training
+- validation monitoring
+- unbiased test evaluation
+
+---
+
+### **3. Model Architecture**
+
+The CNN architecture consists of:
+
+- 3 Convolutional layers
+- 3 MaxPooling layers
+- Flatten layer
+- Dense hidden layer
+- Dropout layer
+- Softmax output layer
+
+### **Architecture Summary**
+
+| Layer | Purpose |
+|---|---|
+| Conv2D | Feature extraction |
+| MaxPooling2D | Downsampling |
+| Flatten | Feature vector conversion |
+| Dense | Learning patterns |
+| Dropout | Prevent overfitting |
+| Softmax | Final classification |
+
+**Total Trainable Parameters:** 683,458
+
+---
+
+## **Evaluation Strategy**
+
+Since this is a **medical classification problem**, the project prioritizes **Recall** over Accuracy.
+
+### Why Recall?
+
+In healthcare:
+
+A **false negative** means an infected patient is classified as healthy.
+
+This can result in:
+
+- delayed treatment
+- increased disease spread
+- higher clinical risk
+
+For this reason:
+
+> **Recall is the primary evaluation metric**
+
+### **Metrics Used**
+
+- Recall (Primary)
+- Precision
+- AUC
+- Accuracy
+- F1-score
+- Confusion Matrix
+
+---
+
+## **Model Training**
+
+Training configuration:
+
+| Parameter | Value |
+|---|---|
+| Epochs | 20 |
+| Batch Size | 16 |
+| Optimizer | Adam |
+| Loss Function | Categorical Crossentropy |
+
+---
+
+## **Results**
+
+### Final Test Performance
+
+| Metric | Score |
+|---|---|
+| Recall | **99.68%** |
+| Precision | **99.68%** |
+| AUC | **99.76%** |
+| Accuracy | **99.68%** |
+
+---
+
+## **Classification Report**
+
+| Class | Precision | Recall | F1-score |
+|---|---|---|---|
+| Non-COVID-19 | 1.00 | 1.00 | 1.00 |
+| COVID-19 | 1.00 | 0.97 | 0.99 |
+
+---
+
+## **Key Findings**
+
+- The CNN successfully learned discriminative CT scan features
+- High recall indicates strong COVID-19 detection capability
+- Low false negatives improve reliability in medical screening
+- High AUC shows excellent class separability
+
+---
+
+## **Tech Stack**
+
+- Python
+- TensorFlow / Keras
+- OpenCV
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
+- Jupyter Notebook
+
+---
+
+## **Repository Structure**
+
+```text
+COVID-CT-Scan-Detection/
+│── covid.ipynb
+│── README.md
+│── .gitignore
+```
+
+**Note:** Raw image datasets are excluded from version control using `.gitignore`.
+
+---
+
+## **Future Improvements**
+
+Potential improvements:
+
+- Transfer Learning (ResNet50, EfficientNet, MobileNetV2)
+- Image augmentation
+- Hyperparameter tuning
+- Explainable AI (Grad-CAM)
+- Deployment with Streamlit or Flask
+
+---
+
+## **Conclusion**
+
+This project demonstrates the effectiveness of Convolutional Neural Networks in medical image classification.
+
+By prioritizing **Recall**, the model aligns with real-world healthcare requirements where missing positive cases is more critical than maximizing overall accuracy.
+
+The strong performance indicates the model can support clinical decision systems for COVID-19 screening.
+
+---
+
+## **Author**
+
+**Daniel Njeru**  
+Data Scientist | Machine Learning | AI | Data Analytics
+
+GitHub: https://github.com/DanDev014
